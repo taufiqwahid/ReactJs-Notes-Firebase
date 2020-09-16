@@ -11,31 +11,35 @@ export const changeTitlePage = (dispatch) => {
 
 export const registerUserAPI = (data) => (dispatch) => {
   dispatch({ type: "CHANGE_ISLOADING", value: true });
-  return firebase
-    .auth()
-    .createUserWithEmailAndPassword(data.email, data.password)
-    .then((res) => {
-      console.log("Create = ", res);
-      dispatch({ type: "CHANGE_ISLOADING", value: false });
-      alert("Sukses Menambahkan Data ke Firebase");
-    })
-    .catch((error) => {
-      dispatch({ type: "CHANGE_ISLOADING", value: false });
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log("errorCode = ", errorCode);
-      console.log("errorMessage = ", errorMessage);
+  return new Promise((resolve, reject) => {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(data.email, data.password)
+      .then((res) => {
+        console.log("Create = ", res);
+        dispatch({ type: "CHANGE_ISLOADING", value: false });
+        alert("Sukses Menambahkan Data ke Firebase");
+        resolve(true);
+      })
+      .catch((error) => {
+        dispatch({ type: "CHANGE_ISLOADING", value: false });
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log("errorCode = ", errorCode);
+        console.log("errorMessage = ", errorMessage);
 
-      if (errorMessage) {
-        alert("Ada kesalahan dalam mengimput Email ataupun Password");
-      }
-    });
+        if (errorMessage) {
+          alert("Ada kesalahan dalam mengimput Email ataupun Password");
+        }
+        reject(false);
+      });
+  });
 };
 
 export const loginUserAPI = (data) => (dispatch) => {
+  dispatch({ type: "CHANGE_ISLOADING", value: true });
   return new Promise((resolve, reject) => {
-    dispatch({ type: "CHANGE_ISLOADING", value: true });
     firebase
       .auth()
       .signInWithEmailAndPassword(data.email, data.password)

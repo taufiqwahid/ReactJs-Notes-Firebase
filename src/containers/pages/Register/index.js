@@ -20,13 +20,18 @@ class Register extends Component {
     });
   };
 
-  handleRegisterValue = () => {
+  handleRegisterValue = async () => {
     const { email, password } = this.state;
-    this.props.registerAPI({ email: email, password: password });
-    this.setState({
-      email: "",
-      password: "",
-    });
+    const res = await this.props
+      .registerAPI({ email: email, password: password })
+      .catch((err) => err);
+
+    if (res === true) {
+      this.setState({
+        email: "",
+        password: "",
+      });
+    }
   };
 
   render() {
