@@ -3,11 +3,11 @@
 
 const initialState = {
   //membuat nilai state/ props data
+  isTitlePage: "Dashboard Page",
   popUp: "PopUp",
   isLoading: false,
   isLogin: false,
   isUser: {},
-  isTitlePage: "Dashboard Page",
 };
 
 // data yang sudah di ubah dikirim kembali ke state global
