@@ -17,14 +17,30 @@ export class Login extends Component {
     });
   };
 
-  handleLoginSubmit = () => {
+  handleLoginSubmit = async () => {
     const { email, password } = this.state;
-    this.props.loginAPI({ email: email, password: password });
-    this.setState({
-      email: "",
-      password: "",
-    });
+    const res = await this.props
+      .loginAPI({ email: email, password: password })
+      .catch((err) => err);
+
+    if (res === true) {
+      const { history } = this.props;
+      //cek hasil dari resolve di action menggunakan Promise
+      console.log("Login sukses!");
+      this.setState({
+        email: "",
+        password: "",
+      });
+      history.push("/");
+    } else {
+      console.log("Login Gagal!");
+      this.setState({
+        email: "",
+        password: "",
+      });
+    }
   };
+
   render() {
     return (
       <div className="register">

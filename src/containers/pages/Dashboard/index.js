@@ -1,24 +1,26 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { actionUser } from "../../../config/redux/action";
+import { changeTitlePage } from "../../../config/redux/action";
 
 export class Dashboard extends Component {
-  changeUser = () => {
-    this.props.changeUserProps();
+  ChangeThisTitle = () => {
+    this.props.ChangeThisTitleProps();
   };
   render() {
     return (
       <div>
-        <h3>{this.props.userProps}</h3>
+        <h3>{this.props.titlePageProps}</h3>
         <div>
-          <button onClick={this.changeUser}>Ke Dashboard Taufiq Wahid</button>
+          <button onClick={this.ChangeThisTitle}>
+            Ke Dashboard Taufiq Wahid
+          </button>
         </div>
         <br />
         <Link to="/register">
           <button>Go to Register</button>
         </Link>
-        <Link to="/register">
+        <Link to="/">
           <button>Go to Dashboard</button>
         </Link>
       </div>
@@ -26,12 +28,12 @@ export class Dashboard extends Component {
   }
 }
 const reduxState = (state) => ({
-  userProps: state.isUser,
+  titlePageProps: state.isTitlePage,
 });
 
 const reduxDispatch = (dispatch) => {
   return {
-    changeUserProps: () => dispatch(actionUser),
+    ChangeThisTitleProps: () => dispatch(changeTitlePage),
   };
 };
 

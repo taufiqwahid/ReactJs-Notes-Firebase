@@ -7,10 +7,17 @@ const initialState = {
   isLoading: false,
   isLogin: false,
   isUser: {},
+  isTitlePage: "Dashboard Page",
 };
 
 // data yang sudah di ubah dikirim kembali ke state global
 const reducer = (state = initialState, action) => {
+  if (action.type === "CHANGE_ISTITLEPAGE") {
+    return {
+      ...state,
+      isUser: action.value,
+    };
+  }
   if (action.type === "CHANGE_POPUP") {
     return {
       ...state,
