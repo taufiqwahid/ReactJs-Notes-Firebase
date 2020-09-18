@@ -32,6 +32,8 @@ class Register extends Component {
         password: "",
       });
     }
+    const { history } = this.props;
+    history.push("/login");
   };
 
   render() {

@@ -3,7 +3,6 @@
 
 const initialState = {
   //membuat nilai state/ props data
-  isTitlePage: "Dashboard Page",
   popUp: "PopUp",
   isLoading: false,
   isLogin: false,
@@ -12,12 +11,6 @@ const initialState = {
 
 // data yang sudah di ubah dikirim kembali ke state global
 const reducer = (state = initialState, action) => {
-  if (action.type === "CHANGE_ISTITLEPAGE") {
-    return {
-      ...state,
-      isUser: action.value,
-    };
-  }
   if (action.type === "CHANGE_POPUP") {
     return {
       ...state,

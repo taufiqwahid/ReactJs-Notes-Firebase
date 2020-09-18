@@ -1,0 +1,78 @@
+.notes {
+  display: block;
+  margin: auto;
+
+  h1 {
+    text-align: center;
+    color: darkslategray;
+  }
+
+  .inputContent {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    width: 300px;
+    margin-bottom: 20px;
+    input {
+      padding: 10px;
+      margin-bottom: 10px;
+      width: 400px;
+      border: 3px solid grey;
+      border-radius: 5px;
+      font-size: 15px;
+      font-weight: bold;
+    }
+    textarea {
+      padding: 10px;
+      width: 400px;
+      margin-bottom: 10px;
+      border: 3px solid grey;
+      border-radius: 5px;
+      font-weight: bold;
+
+      font-size: 15px;
+    }
+    button {
+      padding: 6px;
+      width: 150px;
+      background-color: white;
+      border: 3px solid darkcyan;
+      border-radius: 5px;
+      font-size: 15px;
+      font-weight: 700;
+      &:hover {
+        cursor: pointer;
+        border: 3px solid forestgreen;
+      }
+    }
+  }
+  hr {
+    max-width: 550px;
+  }
+  .content {
+    text-align: center;
+    border: 2px solid;
+    margin: 10px auto;
+    max-width: 500px;
+
+    border-radius: 5px;
+
+    h4 {
+      margin: 10px;
+      font-size: 17px;
+    }
+    .tanggal {
+      margin-top: -30px;
+      margin-right: 5px;
+      float: right;
+      font-size: 13px;
+      color: darkslategray;
+    }
+
+    .contentNotes {
+      text-align: justify;
+      padding: 0 10px;
+    }
+  }
+}

@@ -1,13 +1,5 @@
 import firebase from "../../firebase";
-
-export const changeTitlePage = (dispatch) => {
-  setTimeout(() => {
-    dispatch({
-      type: "CHANGE_ISTITLEPAGE",
-      value: "asdaasdasd",
-    });
-  }, 3000);
-};
+import { database } from "../../firebase";
 
 export const registerUserAPI = (data) => (dispatch) => {
   dispatch({ type: "CHANGE_ISLOADING", value: true });
@@ -51,6 +43,7 @@ export const loginUserAPI = (data) => (dispatch) => {
         };
 
         console.log("SignIn = ", res);
+        console.log(dataUser);
         dispatch({ type: "CHANGE_ISLOADING", value: false });
         dispatch({ type: "CHANGE_ISLOGIN", value: true });
         dispatch({ type: "CHANGE_ISUSER", value: dataUser });
@@ -72,4 +65,15 @@ export const loginUserAPI = (data) => (dispatch) => {
         reject(false);
       });
   });
+};
+
+export const addDataToFirebase = (data) => (dispatch) => {
+  firebase
+    .database()
+    .ref("notes/" + data.userId)
+    .set({
+      title: data.title,
+      content: data.content,
+      date: data.date,
+    });
 };

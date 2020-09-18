@@ -1,8 +1,9 @@
-import * as firebase from "firebase/app";
+import firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/database";
 
 // Your web app's Firebase configuration
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyA3fAvJa4l6v19mWUCFaWdLKj9IoBgmvd4",
   authDomain: "reactjs-notes-10b1b.firebaseapp.com",
   databaseURL: "https://reactjs-notes-10b1b.firebaseio.com",
@@ -15,5 +16,8 @@ var firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+// Get a reference to the database service
+export const database = firebase.database();
 
 export default firebase;
