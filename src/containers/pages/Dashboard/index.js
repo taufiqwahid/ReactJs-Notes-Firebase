@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import "../Dashboard/Dashboard.scss";
 import {
   addDataToFirebase,
   getDataToFirebase,
 } from "../../../config/redux/action";
+import FadeIn from "react-fade-in";
 
 export class Dashboard extends Component {
   state = {
@@ -59,6 +60,8 @@ export class Dashboard extends Component {
 
   render() {
     const { title, content } = this.state;
+    const { notes } = this.props;
+    console.log("NOTES:", notes);
     return (
       <div className="notes">
         <h1>Simple Notes Firebase</h1>
@@ -80,15 +83,21 @@ export class Dashboard extends Component {
           <button onClick={this.handleSaveNotes}>Simpan</button>
         </div>
         <hr />
-        <div className="content">
-          <h4>Title</h4>
-          <p className="tanggal">21 april 1999</p>
-          <p className="contentNotes">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum sunt,
-            quod quo ut iusto maiores aut velit obcaecati! Deleniti aspernatur
-            in facilis ipsa eos quisquam! Optio dicta deleniti quia vero.tent
-          </p>
-        </div>
+        {notes.length > 0 ? (
+          <Fragment>
+            <FadeIn delay={50} transitionDuration={1000}>
+              {notes.map((note) => {
+                return (
+                  <div className="content" key={note.id}>
+                    <h4>{note.data.title}</h4>
+                    <p className="tanggal">{note.data.date}</p>
+                    <p className="contentNotes">{note.data.content}</p>
+                  </div>
+                );
+              })}
+            </FadeIn>
+          </Fragment>
+        ) : null}
       </div>
     );
   }
@@ -96,6 +105,7 @@ export class Dashboard extends Component {
 
 const reduxState = (state) => ({
   userData: state.isUser,
+  notes: state.notes,
 });
 
 const reduxDispatch = (dispatch) => {

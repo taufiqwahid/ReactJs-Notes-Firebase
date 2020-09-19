@@ -96,7 +96,6 @@ export const getDataToFirebase = (userId) => (dispatch) => {
         });
       });
 
-      console.log(data);
       dispatch({ type: "SET_NOTES", value: data });
       resolve(snapshot.val());
     });
