@@ -1,5 +1,4 @@
 import firebase from "../../firebase";
-import { database } from "../../firebase";
 
 export const registerUserAPI = (data) => (dispatch) => {
   dispatch({ type: "CHANGE_ISLOADING", value: true });
@@ -90,7 +89,7 @@ export const getDataToFirebase = (userId) => (dispatch) => {
       const data = [];
 
       Object.keys(snapshot.val()).map((key) => {
-        data.push({
+        return data.push({
           id: key,
           data: snapshot.val()[key],
         });
