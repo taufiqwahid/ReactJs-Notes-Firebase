@@ -7,6 +7,7 @@ const initialState = {
   isLoading: false,
   isLogin: false,
   isUser: {},
+  notes: [],
 };
 
 // data yang sudah di ubah dikirim kembali ke state global
@@ -33,6 +34,12 @@ const reducer = (state = initialState, action) => {
     return {
       ...state,
       isUser: action.value,
+    };
+  }
+  if (action.type === "SET_NOTES") {
+    return {
+      ...state,
+      notes: action.value,
     };
   }
   return state;

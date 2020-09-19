@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../Dashboard/Dashboard.scss";
-import { addDataToFirebase } from "../../../config/redux/action";
+import {
+  addDataToFirebase,
+  getDataToFirebase,
+} from "../../../config/redux/action";
 
 export class Dashboard extends Component {
   state = {
@@ -9,6 +12,11 @@ export class Dashboard extends Component {
     content: "",
     data: "",
   };
+
+  componentDidMount() {
+    const dataUser = JSON.parse(localStorage.getItem("dataUser"));
+    this.props.getNotes(dataUser.uid);
+  }
 
   onInputChange = (e, type) => {
     this.setState({
@@ -18,12 +26,16 @@ export class Dashboard extends Component {
 
   handleSaveNotes = () => {
     const { title, content } = this.state;
+    const dataUser = JSON.parse(localStorage.getItem("dataUser"));
+    console.log("localStorage", dataUser);
+
     const data = {
       title: title,
       content: content,
       date: new Date().getTime(),
-      userId: this.props.userData.uid,
+      userId: dataUser.uid,
     };
+
     if (data.userId === undefined) {
       alert("Silahkan Login Dlu");
       console.log("Tidak Ditemukan UID, Silahkan Login");
@@ -35,6 +47,11 @@ export class Dashboard extends Component {
       const { history } = this.props;
       history.push("/login");
     } else {
+      this.setState({
+        title: "",
+        content: "",
+        data: "",
+      });
       this.props.saveNotes(data);
     }
     console.log("SAVE NOTES = ", data);
@@ -72,19 +89,6 @@ export class Dashboard extends Component {
             in facilis ipsa eos quisquam! Optio dicta deleniti quia vero.tent
           </p>
         </div>
-        <div className="content">
-          <h4>Title</h4>
-          <p className="tanggal">21 april 1999</p>
-          <p className="contentNotes">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum sunt,
-            quod quo ut iusto maiores aut Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Quia sed nostrum excepturi, molestias nesciunt ut
-            maiores natus beatae repellat odit, eligendi eaque eveniet. Fugiat
-            vel fugit animi quasi, odit obcaecati!lit obcaecati! Deleniti
-            aspernatur in facilis ipsa eos quisquam! Optio dicta deleniti quia
-            vero.tent
-          </p>
-        </div>
       </div>
     );
   }
@@ -97,6 +101,7 @@ const reduxState = (state) => ({
 const reduxDispatch = (dispatch) => {
   return {
     saveNotes: (data) => dispatch(addDataToFirebase(data)),
+    getNotes: (data) => dispatch(getDataToFirebase(data)),
   };
 };
 

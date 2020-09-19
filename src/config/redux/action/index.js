@@ -40,10 +40,14 @@ export const loginUserAPI = (data) => (dispatch) => {
           uid: res.user.uid,
           email: res.user.email,
           verication: res.user.emailVerified,
+          refreshToken: res.user.refreshToken,
         };
 
         console.log("SignIn = ", res);
-        console.log(dataUser);
+
+        //localStorage
+        localStorage.setItem("dataUser", JSON.stringify(dataUser));
+
         dispatch({ type: "CHANGE_ISLOADING", value: false });
         dispatch({ type: "CHANGE_ISLOGIN", value: true });
         dispatch({ type: "CHANGE_ISUSER", value: dataUser });
@@ -71,9 +75,30 @@ export const addDataToFirebase = (data) => (dispatch) => {
   firebase
     .database()
     .ref("notes/" + data.userId)
-    .set({
+    .push({
       title: data.title,
       content: data.content,
       date: data.date,
     });
+};
+
+export const getDataToFirebase = (userId) => (dispatch) => {
+  return new Promise((resolve, reject) => {
+    const urlNotes = firebase.database().ref("notes/" + userId);
+    urlNotes.on("value", function (snapshot) {
+      console.log("GetData = ", snapshot.val());
+      const data = [];
+
+      Object.keys(snapshot.val()).map((key) => {
+        data.push({
+          id: key,
+          data: snapshot.val()[key],
+        });
+      });
+
+      console.log(data);
+      dispatch({ type: "SET_NOTES", value: data });
+      resolve(snapshot.val());
+    });
+  });
 };
