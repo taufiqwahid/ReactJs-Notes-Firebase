@@ -88,12 +88,17 @@ export const getDataToFirebase = (userId) => (dispatch) => {
       console.log("GetData = ", snapshot.val());
       const data = [];
 
-      Object.keys(snapshot.val()).map((key) => {
-        return data.push({
-          id: key,
-          data: snapshot.val()[key],
+      if (userId) {
+        Object.keys(snapshot.val()).map((key) => {
+          return data.push({
+            id: key,
+            data: snapshot.val()[key],
+          });
         });
-      });
+      } else {
+        const { history } = this.props;
+        history.push("/register");
+      }
 
       dispatch({ type: "SET_NOTES", value: data });
       resolve(snapshot.val());

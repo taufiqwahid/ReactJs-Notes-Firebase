@@ -39,7 +39,7 @@ class Register extends Component {
   render() {
     return (
       <div className="register">
-        <h3>Register Page</h3>
+        <h2>Register Page</h2>
         <form action="#">
           <input
             id="email"
@@ -65,10 +65,6 @@ class Register extends Component {
         </form>
 
         <br />
-
-        <Link to="/">
-          <button>Go to Dashboard</button>
-        </Link>
       </div>
     );
   }

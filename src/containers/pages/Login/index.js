@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Button from "../../../components/atoms/Button";
 import { loginUserAPI } from "../../../config/redux/action";
+import "../Login/Login.scss";
 
 export class Login extends Component {
   state = {
@@ -43,8 +44,8 @@ export class Login extends Component {
 
   render() {
     return (
-      <div className="register">
-        <h3>Login Page</h3>
+      <div className="login">
+        <h2>Login Page</h2>
         <form action="#">
           <input
             id="email"
@@ -70,10 +71,6 @@ export class Login extends Component {
         </form>
 
         <br />
-
-        <Link to="/">
-          <button>Go to Dashboard</button>
-        </Link>
       </div>
     );
   }

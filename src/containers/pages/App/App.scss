@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+.wrapper {
+  display: flexbox;
+  justify-content: center;
+  // background-color: darkseagreen;
+  align-items: center;
+  text-align: center;
+  nav {
+    a {
+      text-decoration: none;
+      margin: 10px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: dimgrey;
+      cursor: pointer;
+      &:hover {
+        color: black;
+      }
+    }
+  }
+}

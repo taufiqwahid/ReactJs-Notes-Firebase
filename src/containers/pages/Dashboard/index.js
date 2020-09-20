@@ -53,11 +53,17 @@ export class Dashboard extends Component {
         content: "",
         data: "",
       });
-      this.props.saveNotes(data);
+      if (title && content) {
+        this.props.saveNotes(data);
+      } else {
+        alert("Lengkapi Title dan Contentnya terlebih dahulu");
+      }
     }
     console.log("SAVE NOTES = ", data);
   };
-
+  handleOnClick() {
+    alert("aaaa");
+  }
   render() {
     const { title, content } = this.state;
     const { notes } = this.props;
@@ -88,10 +94,15 @@ export class Dashboard extends Component {
             <FadeIn delay={50} transitionDuration={1000}>
               {notes.map((note) => {
                 return (
-                  <div className="content" key={note.id}>
-                    <h4>{note.data.title}</h4>
-                    <p className="tanggal">{note.data.date}</p>
-                    <p className="contentNotes">{note.data.content}</p>
+                  <div className="container" key={note.id}>
+                    <div className="content">
+                      <h4 className="title">{note.data.title}</h4>
+                      <h4 className="close" onClick={this.handleOnClick}>
+                        X
+                      </h4>
+                      <p className="tanggal">{note.data.date}</p>
+                      <p className="contentNotes">{note.data.content}</p>
+                    </div>
                   </div>
                 );
               })}

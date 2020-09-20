@@ -5,30 +5,32 @@ import Register from "../Register";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "../../../config/redux";
-import "./App.css";
+import "./App.scss";
+import Homepage from "../Homepage";
+import Logout from "../Logout";
 
 function App() {
   return (
     <Provider store={store}>
       <Router>
-        <div>
+        <div className="wrapper">
           <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link to="/register">Register</Link>
-              </li>
-            </ul>
+            <Link to="/home">Home</Link>
+
+            <Link to="/dashboard">Dashboard</Link>
+
+            <Link to="/login">Login</Link>
+
+            <Link to="/register">Register</Link>
+
+            <Link to="/logout">Logout</Link>
           </nav>
 
-          <Route path="/" exact component={Dashboard} />
+          <Route path="/home" exact component={Homepage} />
+          <Route path="/dashboard" component={Dashboard} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/logout" component={Logout} />
         </div>
       </Router>
     </Provider>
