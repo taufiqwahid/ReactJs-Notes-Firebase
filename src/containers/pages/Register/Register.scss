@@ -1,28 +1,33 @@
 .register {
   h2 {
     color: darkslategray;
+    margin: 10px;
   }
   form {
     border: none;
     display: flex;
     flex-direction: column;
-    margin: 10px;
     max-width: 300px;
     border: 1px solid black;
-    padding: 5px;
+    padding: 15px;
     text-align: center;
     border-radius: 10px;
+
     margin: 0 auto;
-
     input {
-      margin: 4px;
-
+      margin: 5px;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid dodgerblue;
       &:last-child {
         background-color: dodgerblue;
         border: none;
-        border-radius: 5px;
+        border-radius: 10px;
         color: white;
-        padding: 2px;
+        padding: 5px;
+
+        align-self: center;
+        width: 10rem;
         cursor: pointer;
 
         &[disabled] {

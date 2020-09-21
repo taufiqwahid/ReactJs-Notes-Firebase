@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Button from "../../../components/atoms/Button";
 import { loginUserAPI } from "../../../config/redux/action";
@@ -45,8 +44,8 @@ export class Login extends Component {
   render() {
     return (
       <div className="login">
-        <h2>Login Page</h2>
         <form action="#">
+          <h2>Login Page</h2>
           <input
             id="email"
             type="email"

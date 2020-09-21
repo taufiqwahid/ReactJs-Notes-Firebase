@@ -88,7 +88,7 @@ export const getDataToFirebase = (userId) => (dispatch) => {
       console.log("GetData = ", snapshot.val());
       const data = [];
 
-      if (userId) {
+      if (snapshot.val()) {
         Object.keys(snapshot.val()).map((key) => {
           return data.push({
             id: key,
@@ -99,9 +99,12 @@ export const getDataToFirebase = (userId) => (dispatch) => {
         const { history } = this.props;
         history.push("/register");
       }
-
       dispatch({ type: "SET_NOTES", value: data });
       resolve(snapshot.val());
     });
   });
+};
+
+export const deleteDataToFirebase = (data) => (dispatch) => {
+  return new Promise((resolve, reject) => {});
 };

@@ -15,8 +15,14 @@ export class Dashboard extends Component {
   };
 
   componentDidMount() {
-    const dataUser = JSON.parse(localStorage.getItem("dataUser"));
-    this.props.getNotes(dataUser.uid);
+    if (localStorage.getItem("dataUser")) {
+      const dataUser = JSON.parse(localStorage.getItem("dataUser"));
+      this.props.getNotes(dataUser.uid);
+    } else {
+      alert("Silahkan Login atau Register terlebih dahulu");
+      const { history } = this.props;
+      history.push("/register");
+    }
   }
 
   onInputChange = (e, type) => {
@@ -61,9 +67,11 @@ export class Dashboard extends Component {
     }
     console.log("SAVE NOTES = ", data);
   };
+
   handleOnClick() {
     alert("aaaa");
   }
+
   render() {
     const { title, content } = this.state;
     const { notes } = this.props;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Register.scss";
 // import firebase from "../../../config/firebase";
-import { Link } from "react-router-dom";
+
 import Button from "../../../components/atoms/Button";
 
 import { registerUserAPI } from "../../../config/redux/action";
@@ -39,8 +39,8 @@ class Register extends Component {
   render() {
     return (
       <div className="register">
-        <h2>Register Page</h2>
         <form action="#">
+          <h2>Register Page</h2>
           <input
             id="email"
             type="email"
