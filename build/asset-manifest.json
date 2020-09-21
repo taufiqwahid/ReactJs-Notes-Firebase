@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/ReactJs-Notes-Firebase/static/css/main.670152ad.chunk.css",
+    "main.css": "/ReactJs-Notes-Firebase/static/css/main.0f0a84c3.chunk.css",
     "main.js": "/ReactJs-Notes-Firebase/static/js/main.bf521779.chunk.js",
     "main.js.map": "/ReactJs-Notes-Firebase/static/js/main.bf521779.chunk.js.map",
     "runtime-main.js": "/ReactJs-Notes-Firebase/static/js/runtime-main.d2b504e1.js",
@@ -8,15 +8,15 @@
     "static/js/2.572987c3.chunk.js": "/ReactJs-Notes-Firebase/static/js/2.572987c3.chunk.js",
     "static/js/2.572987c3.chunk.js.map": "/ReactJs-Notes-Firebase/static/js/2.572987c3.chunk.js.map",
     "index.html": "/ReactJs-Notes-Firebase/index.html",
-    "precache-manifest.3913f8fa8beecc12835562addbc03614.js": "/ReactJs-Notes-Firebase/precache-manifest.3913f8fa8beecc12835562addbc03614.js",
+    "precache-manifest.8b903a000cca5117eaed85748955af42.js": "/ReactJs-Notes-Firebase/precache-manifest.8b903a000cca5117eaed85748955af42.js",
     "service-worker.js": "/ReactJs-Notes-Firebase/service-worker.js",
-    "static/css/main.670152ad.chunk.css.map": "/ReactJs-Notes-Firebase/static/css/main.670152ad.chunk.css.map",
+    "static/css/main.0f0a84c3.chunk.css.map": "/ReactJs-Notes-Firebase/static/css/main.0f0a84c3.chunk.css.map",
     "static/js/2.572987c3.chunk.js.LICENSE.txt": "/ReactJs-Notes-Firebase/static/js/2.572987c3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.d2b504e1.js",
     "static/js/2.572987c3.chunk.js",
-    "static/css/main.670152ad.chunk.css",
+    "static/css/main.0f0a84c3.chunk.css",
     "static/js/main.bf521779.chunk.js"
   ]
 }
