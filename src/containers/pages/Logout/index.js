@@ -4,7 +4,8 @@ export default class Logout extends Component {
   componentDidMount() {
     localStorage.removeItem("dataUser");
     const { history } = this.props;
-    history.push("/login");
+    history.push("/ReactJs-Notes-Firebase/login");
+    // history.push("/login");
   }
   render() {
     return (
