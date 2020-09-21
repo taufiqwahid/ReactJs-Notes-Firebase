@@ -97,7 +97,8 @@ export const getDataToFirebase = (userId) => (dispatch) => {
         });
       } else {
         const { history } = this.props;
-        history.push("/register");
+        history.push("/ReactJs-Notes-Firebase/register");
+        // history.push("/register");
       }
       dispatch({ type: "SET_NOTES", value: data });
       resolve(snapshot.val());

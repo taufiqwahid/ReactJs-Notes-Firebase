@@ -33,7 +33,8 @@ class Register extends Component {
       });
     }
     const { history } = this.props;
-    history.push("/login");
+    history.push("/ReactJs-Notes-Firebase/login");
+    // history.push("/login");
   };
 
   render() {

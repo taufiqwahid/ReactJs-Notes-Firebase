@@ -21,7 +21,8 @@ export class Dashboard extends Component {
     } else {
       alert("Silahkan Login atau Register terlebih dahulu");
       const { history } = this.props;
-      history.push("/register");
+      history.push("/ReactJs-Notes-Firebase/register");
+      // history.push("/register");
     }
   }
 
@@ -52,7 +53,8 @@ export class Dashboard extends Component {
         data: "",
       });
       const { history } = this.props;
-      history.push("/login");
+      history.push("/ReactJs-Notes-Firebase/login");
+      // history.push("/login");
     } else {
       this.setState({
         title: "",
@@ -69,7 +71,7 @@ export class Dashboard extends Component {
   };
 
   handleOnClick() {
-    alert("aaaa");
+    alert("Belum berfungsi menghapus hehe");
   }
 
   render() {
